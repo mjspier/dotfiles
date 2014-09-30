@@ -1,0 +1,4 @@
+# ignore all bundles as they are submodules
+./.vim/bundle/*
+./.vim/bundle/AutoComplPop/
+
