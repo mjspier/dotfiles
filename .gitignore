@@ -1,3 +1,8 @@
 # ignore all bundles as they are submodules
-#./.vim/bundle/*
+./.gitignore
+./.vim/bundle/*
+./.vim/plugin/eclim.vim
+./.vim/eclim/*
+./.i3/startup.sh
+./.zsh/exports.zsh
 
