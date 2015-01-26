@@ -72,6 +72,7 @@ endif
 " style 
 set encoding=utf-8
 set spell spelllang=en_gb
+:map <F5> :setlocal spell! spelllang=en_gb<CR>
 set number          " always show line numbers
 set ruler           " always show current position
 
@@ -158,6 +159,11 @@ map <C-l> <C-W>l
 map <C-Left> <Esc>:tabprev<CR>
 map <C-Right> <Esc>:tabnext<CR>
 "map <C-S>} :tabnext
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Commands
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! -bar -nargs=0 SudoW :silent exe “write !sudo tee % >/dev/null” | silent edit!
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Coding
