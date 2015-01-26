@@ -1,3 +1,5 @@
 # ignore all bundles as they are submodules
 #./.vim/bundle/*
+./.zsh/aliases.zsh
+./.zsh/exports.zsh
 

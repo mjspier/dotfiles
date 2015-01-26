@@ -31,3 +31,12 @@
 [submodule ".vim/bundle/logstash.vim"]
 	path = .vim/bundle/logstash.vim
 	url = https://github.com/vim-scripts/logstash.vim
+[submodule ".vim/bundle/vim-css-color"]
+	path = .vim/bundle/vim-css-color
+	url = https://github.com/ap/vim-css-color
+[submodule ".vim/bundle/vim-osx-colorpicker"]
+	path = .vim/bundle/vim-osx-colorpicker
+	url = https://github.com/iandoe/vim-osx-colorpicker
+[submodule ".vim/bundle/emmet-vim"]
+	path = .vim/bundle/emmet-vim
+	url = https://github.com/mattn/emmet-vim

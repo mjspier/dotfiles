@@ -187,11 +187,11 @@ endfunc
 
 
 " tab completion
-set omnifunc=syntaxcomplete#Complete
-set completeopt+=longest
+"set omnifunc=syntaxcomplete#Complete
+"set completeopt+=longest
 "let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabSetDefaultCompletionType = "<c-x><c-u>"
-let g:SuperTabClosePreviewOnPopupClose = 1
+"let g:SuperTabSetDefaultCompletionType = "<c-x><c-u>"
+"let g:SuperTabClosePreviewOnPopupClose = 1
 
 
 " ctrlp options: https://github.com/kien/ctrlp.vim
@@ -219,7 +219,6 @@ vmap <C-c><C-c> :ScreenSend<cr>
 map <C-T> :TComment<CR>
 
 " settings syntastic
-let g:syntastic_python_checkers=['python']
 
 " mac specific config
 if has("unix")
@@ -233,6 +232,7 @@ endif
 " PYTHON "
 """"""""""
 func! SetupPython()
+    let g:syntastic_python_checkers=['python']
     set foldmethod=indent
     set foldnestmax=2
     set foldlevelstart=30
@@ -247,6 +247,7 @@ au BufRead,BufNewFile *.py,*.pyw call SetupPython()
 
 " CSS "
 """""""
+"let g:cssColorVimDoNotMessMyUpdatetime = 1
 func! SetupCss()
     set omnifunc=csscomplete#CompleteCSS
     let g:cssColorVimDoNotMessMyUpdatetime = 1
@@ -275,6 +276,7 @@ func! SetupTex()
 
     "let &makeprg="pdflatex\ \-shell\-escape\ \-file\-line\-error\ \-interaction=batchmode\ \-synctex=1\ " . w:tex_file . "\ 1\>\/dev\/null "
     "let &makeprg="latexmk\ \-silent\ \-pdf\ \-pdflatex=\"pdflatex\ \-shell\-escape\ \-file\-line\-error\\"\ " . w:tex_file
+    "let &makeprg="latexmk\ \-silent\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
     let &makeprg="latexmk\ \-silent\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
 
     function! Compile()
@@ -306,14 +308,14 @@ func! SetupTex()
     endfunction
 
     " commands for latex
-    command! Clean execute "!latexmk\ -C"
-    command! Compile call Compile()
+    command! TexClean execute "!latexmk\ -C"
+    command! TexCompile call Compile()
     command! TexManual let g:TexAuto=0
     command! TexAuto let g:TexAuto=1
     " open pdf with pdf viewer
-    command! View call OpenPDF()
+    command! TexView call OpenPDF()
     " show Warnings
-    command! Warn noautocmd vimgrep /Warning\|FIXME/j *.log | cw
+    command! TexWarn noautocmd vimgrep /Warning\|FIXME/j *.log | cw
 
     autocmd BufWritePost * call AutoCompile()
 endfunc
