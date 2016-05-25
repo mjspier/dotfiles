@@ -53,4 +53,4 @@ vcs_info_wrapper() {
 }
 
 setopt PROMPT_SUBST
-PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} $(vcs_info_wrapper)%(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)%#%f '
+PROMPT='%{$(pwd|grep --color=always /)%${#PWD}G%} $(vcs_info_wrapper)%(!.%F{red}.%F{cyan})%n%f@%F{yellow}%m%f%(!.%F{red}.)'$'\n''>'

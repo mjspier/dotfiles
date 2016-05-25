@@ -212,6 +212,8 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " nerdtree settings
 map <C-n> :NERDTreeTabsToggle<CR>
 let g:nerdtree_tabs_open_on_gui_startup=0
+let NERDTreeIgnore = ['\.pyc$','\.o$']
+
 
 " Setting vim airline
 set laststatus=2
