@@ -180,10 +180,8 @@ bindsym $mod+u exec "unity-control-center"
 for_window [title="^Calculator$"] floating enabled
 bindsym $mod+c exec "gnome-calculator"
 
+for_window [title=".*KeePassX.*"] floating enabled
 
-# background image
-exec --no-startup-id feh --bg-scale ~/.i3/wallpaper.jpg
-exec --no-startup-id ~/.dropbox-dist/dropboxd
 
 # audio 
 bindsym XF86AudioRaiseVolume exec amixer -c 1 -q set Master 2dB+ unmute
@@ -202,3 +200,9 @@ workspace 6 output HDMI3
 # assign applications to workspace
 assign [class="chromium"] 1:www
 assign [class="eclipse"] 4:code
+
+exec --no-startup-id feh --bg-scale ~/.i3/wallpaper.jpg
+exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id unity-settings-daemon
+exec --no-startup-id unset XDG_CURRENT_DESKTOP
+exec --no-startup-id ~/.i3/setkeys.sh

@@ -43,17 +43,18 @@ call pathogen#helptags()
 filetype plugin on
 filetype indent on
 
+set clipboard=unnamedplus " set linux clipboard
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OS X
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"set clipboard=unnamed       " enable osx clipboad
-set clipboard+=unnamed
 set go+=a
 vmap <C-c> "+y
 
 func! SetupOSX()
     let g:pdf_viewer=open       " set open command as pdf viewer
+    set clipboard+=unnamed
 endfunc
 
 if has("unix")
@@ -71,7 +72,7 @@ endif
 
 " style 
 set encoding=utf-8
-set spell spelllang=en_gb
+set nospell 
 :map <F5> :setlocal spell! spelllang=en_gb<CR>
 set number          " always show line numbers
 set ruler           " always show current position
@@ -249,6 +250,7 @@ func! SetupPython()
     nnoremap <buffer> K :<C-u>execute "!pydoc " . expand("<cword>")<CR>
     let NERDTreeIgnore = ['\.pyc$']    
     let g:pep8_map='<leader>8'
+    set tags=./tags;$HOME
 endfunc
 au BufRead,BufNewFile *.py,*.pyw call SetupPython() 
 
@@ -329,3 +331,11 @@ func! SetupTex()
 endfunc
 
 au BufRead,BufNewFile *.tex call SetupTex() 
+
+func! SetupCpp()
+    nnoremap gr :grep <cword> *<CR>
+    set tags=./tags;$HOME
+    " nnoremap <C-[> :pop
+endfunc
+
+au BufRead,BufNewFile *.c call SetupCpp() 
