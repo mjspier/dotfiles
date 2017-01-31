@@ -16,6 +16,7 @@ set nomodeline
 
 " Set to auto read when a file is changed from the outside
 set autoread
+au CursorHold * checktime
 
 " With a map leader it's possible to do extra key combinations
 " " like <leader>w saves the current file
@@ -172,12 +173,13 @@ command! -bar -nargs=0 SudoW :silent exe “write !sudo tee % >/dev/null” | si
 " syntax highlighting
 syntax on
 
-
 " use skeleton files when new file is created
 autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 
 " use Todo command to find 
 command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
+
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
 
 " Delete trailing white space on save, useful for Python and CoffeeScript
 func! DeleteTrailingWS()
@@ -199,6 +201,16 @@ endfunc
 "let g:SuperTabDefaultCompletionType = "context"
 "let g:SuperTabSetDefaultCompletionType = "<c-x><c-u>"
 "let g:SuperTabClosePreviewOnPopupClose = 1
+
+" syntasic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 0
+let g:syntastic_check_on_wq = 0
+nmap <silent> <F7> :SyntasticCheck<CR>
 
 
 " ctrlp options: https://github.com/kien/ctrlp.vim
@@ -227,7 +239,12 @@ vmap <C-c><C-c> :ScreenSend<cr>
 " TComment
 map <C-T> :TComment<CR>
 
-" settings syntastic
+" tagbar
+let g:autotagDisabled = 1
+nmap <silent> <F8> :TagbarToggle<CR>
+let Tlist_Use_Right_Window   = 1
+nnoremap <C-\> :pop<cr>
+nmap <C-c><C-]> <C-w><C-]><C-w>T 
 
 " mac specific config
 if has("unix")
@@ -241,16 +258,21 @@ endif
 " PYTHON "
 """"""""""
 func! SetupPython()
-    let g:syntastic_python_checkers=['python']
+    let g:autotagDisabled = 0
+    let g:syntastic_python_checkers=['flake8']
     set foldmethod=indent
     set foldnestmax=2
     set foldlevelstart=30
     set foldlevel=99
     set nosmartindent             " smart indent doesn't handle comments nice in python
-    nnoremap <buffer> K :<C-u>execute "!pydoc " . expand("<cword>")<CR>
+    set colorcolumn=80
+    highlight ColorColumn ctermbg=gray
     let NERDTreeIgnore = ['\.pyc$']    
     let g:pep8_map='<leader>8'
     set tags=./tags;$HOME
+    
+    nnoremap <buffer> K :<C-u>execute "!pydoc " . expand("<cword>")<CR>
+
 endfunc
 au BufRead,BufNewFile *.py,*.pyw call SetupPython() 
 
@@ -334,7 +356,7 @@ au BufRead,BufNewFile *.tex call SetupTex()
 
 func! SetupCpp()
     nnoremap gr :grep <cword> *<CR>
-    set tags=./tags;$HOME
+    set tags=./.tags;$HOME
     " nnoremap <C-[> :pop
 endfunc
 

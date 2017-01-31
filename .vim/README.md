@@ -22,6 +22,15 @@ Quick tip
 ---------
 
 ```sh
+# move
+ctrl+o  # got to previous position
+ctrl+i  # jump forward to position
+:jump   # show jump list
+
+# search 
+F4      # grep word under cursor
+shift+3 # highlifht word under cursor
+
 # nerdtree
 ctrl+n  # togglet nerdtree
 I       # show hidden files
@@ -38,7 +47,21 @@ yss)    # surroudn line with parantheses
 # screen 
 :ScreenShellAttach # attach to running screen session
 
+# tags
+F8              # toggle tagbar
+ctrl+]          # go to definition
+ctrl+\          # open definition in tab
+ctrl+w ctrl+]   # open def in horizontal split
+ctrl+c ctrl+]   # open tag in new tab
+:tag name       # go to definition
+:ts             # list definition of last tag
 
+# syntax check
+F7              # check python against pep8
+
+# quckfix
+:ccl            # close quickfix
+:copen          # open quickfix
 
 ```
 
