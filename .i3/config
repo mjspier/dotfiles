@@ -205,5 +205,7 @@ exec --no-startup-id feh --bg-scale ~/.i3/wallpaper.jpg
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id unity-settings-daemon
 exec --no-startup-id unset XDG_CURRENT_DESKTOP
-exec --no-startup-id ~/.i3/setkeys.sh
+exec --no-startup-id ~/.bin/startup.sh
 exec pidgin
+
+bindsym Scroll_Lock exec ~/.bin/kvm

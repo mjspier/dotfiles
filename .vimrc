@@ -203,14 +203,15 @@ endfunc
 "let g:SuperTabClosePreviewOnPopupClose = 1
 
 " syntasic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-nmap <silent> <F7> :SyntasticCheck<CR>
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+nmap <silent> <F7> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 
 " ctrlp options: https://github.com/kien/ctrlp.vim
@@ -237,13 +238,14 @@ nmap <C-c><C-c> :ScreenSend<cr>
 vmap <C-c><C-c> :ScreenSend<cr>
 
 " TComment
-map <C-T> :TComment<CR>
+nmap <C-c> :TComment<CR>
 
-" tagbar
+" ctags
 let g:autotagDisabled = 1
+let g:autotagTagsFile = '.tags'
 nmap <silent> <F8> :TagbarToggle<CR>
 let Tlist_Use_Right_Window   = 1
-nnoremap <C-\> :pop<cr>
+" nnoremap <C-\> :pop<cr>
 nmap <C-c><C-]> <C-w><C-]><C-w>T 
 
 " mac specific config
@@ -356,8 +358,8 @@ au BufRead,BufNewFile *.tex call SetupTex()
 
 func! SetupCpp()
     nnoremap gr :grep <cword> *<CR>
+    let g:autotagDisabled = 0
     set tags=./.tags;$HOME
-    " nnoremap <C-[> :pop
 endfunc
 
 au BufRead,BufNewFile *.c call SetupCpp() 

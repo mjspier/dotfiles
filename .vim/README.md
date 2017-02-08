@@ -15,6 +15,7 @@ Installed plugins
 + [vim-surround](https://github.com/tpope/vim-surround)
 + vim-css-color
 + [screen](https://github.com/ervandew/screen)
++ [vim-autotag](https://github.com/craigemery/vim-autotag)
 
 
 
@@ -22,14 +23,30 @@ Quick tip
 ---------
 
 ```sh
+# open files
+:e file      # open file in buffer
+:tabnew file # open file in new tab
+:old         # list recent files
+
+# windows
+ctrl+w, s    # open horizontal split
+ctrl+w, v    # open vertical split
+
 # move
 ctrl+o  # got to previous position
 ctrl+i  # jump forward to position
 :jump   # show jump list
 
+# tabs
+ctrl+right # open tab to the right 
+ctrl+left  # open tab to the left 
+:tabm +1   # move tab to the right
+:tabm -1   # move tab to the left
+
 # search 
 F4      # grep word under cursor
-shift+3 # highlifht word under cursor
+shift+8 # forward search word under cursor
+shift+3 # backward search word under cursor
 
 # nerdtree
 ctrl+n  # togglet nerdtree
@@ -37,6 +54,9 @@ I       # show hidden files
 t       # open in new tab
 s       # open in vertical split
 i       # open in horizontal split
+
+# coding
+ctrl+_ ctrl+_ # comment
 
 # surround
 cs'<q>  # change single quotes to q tag
@@ -50,7 +70,7 @@ yss)    # surroudn line with parantheses
 # tags
 F8              # toggle tagbar
 ctrl+]          # go to definition
-ctrl+\          # open definition in tab
+ctrl+t          # got back to caller
 ctrl+w ctrl+]   # open def in horizontal split
 ctrl+c ctrl+]   # open tag in new tab
 :tag name       # go to definition
@@ -64,7 +84,6 @@ F7              # check python against pep8
 :copen          # open quickfix
 
 ```
-
 
 Latex
 -----
