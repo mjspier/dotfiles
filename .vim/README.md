@@ -58,11 +58,16 @@ i       # open in horizontal split
 # coding
 ctrl+_ ctrl+_ # comment
 
+# formatting
+ggV=G             # format indentions in whole file
+:!column -t       # (unix command) nicely format columns
+
+
 # surround
 cs'<q>  # change single quotes to q tag
 cst"    # change tags to double quotes
 ysiw]   # surround word with brackets
-yss)    # surroudn line with parantheses
+yss)    # surround line with parantheses
 
 # screen 
 :ScreenShellAttach # attach to running screen session
@@ -78,6 +83,12 @@ ctrl+c ctrl+]   # open tag in new tab
 
 # syntax check
 F7              # check python against pep8
+
+# spell check
+F5              # activate spell check
+]s              # next missspelled word
+[s              # forward missspelled word
+z=              # suggest word
 
 # quckfix
 :ccl            # close quickfix
