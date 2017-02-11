@@ -22,7 +22,7 @@ Installed plugins
 Quick tip
 ---------
 
-```sh
+```
 # open files
 :e file      # open file in buffer
 :tabnew file # open file in new tab
@@ -111,4 +111,7 @@ Uses latexmk for compile
 :TexClean       # remove intermediate files (latexmk -c)
 :TexView        # opens pdf 
 :TexWarn        # show warning in quick window
+
+# keys
+<leader>ll      # compile document
 ```

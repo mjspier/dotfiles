@@ -295,8 +295,12 @@ func! SetupTex()
     set filetype=tex
     let g:tex_conceal = ""
     set conceallevel=0
+    set wrap
+    set textwidth=80
+    set relativenumber
+    set shiftwidth=2
     " params 
-    let g:TexAuto = 1
+    let g:TexAuto = 0
     set errorformat=%f:%l:\ %m
     let w:tex_file =  system("grep -l '\\documentclass' *.tex")[:-2]
     let w:pdf_file =  system("grep -l '\\documentclass' *.tex |  sed 's/.tex/.pdf/'")[:-2]
@@ -350,6 +354,8 @@ func! SetupTex()
     command! TexView call OpenPDF()
     " show Warnings
     command! TexWarn noautocmd vimgrep /Warning\|FIXME/j *.log | cw
+
+    nnoremap <leader>ll :TexCompile <CR>
 
     autocmd BufWritePost * call AutoCompile()
 endfunc
