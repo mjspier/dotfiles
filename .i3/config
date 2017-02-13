@@ -177,9 +177,7 @@ bindsym $mod+n exec "nautilus --no-desktop"
 bindsym $mod+u exec "unity-control-center"
 
 # calc
-for_window [title="^Calculator$"] floating enabled
 bindsym $mod+c exec "gnome-calculator"
-
 for_window [title=".*KeePassX.*"] floating enabled
 
 

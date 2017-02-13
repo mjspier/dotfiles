@@ -17,6 +17,18 @@ set nomodeline
 " Set to auto read when a file is changed from the outside
 set autoread
 au CursorHold * checktime
+set cursorline
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[1 q"' | redraw!
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' | 
+    \   silent execute '!echo -ne "\e[5 q"' | redraw! |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[3 q"' | redraw! |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"' | redraw!
+endif
+
 
 " With a map leader it's possible to do extra key combinations
 " " like <leader>w saves the current file
@@ -245,7 +257,6 @@ let g:autotagDisabled = 1
 let g:autotagTagsFile = '.tags'
 nmap <silent> <F8> :TagbarToggle<CR>
 let Tlist_Use_Right_Window   = 1
-" nnoremap <C-\> :pop<cr>
 nmap <C-c><C-]> <C-w><C-]><C-w>T 
 
 " mac specific config
