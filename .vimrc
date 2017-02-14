@@ -307,9 +307,9 @@ func! SetupTex()
     let g:tex_conceal = ""
     set conceallevel=0
     set wrap
-    set textwidth=80
     set relativenumber
     set shiftwidth=2
+    colorscheme wombat
     " params 
     let g:TexAuto = 0
     set errorformat=%f:%l:\ %m
@@ -326,7 +326,7 @@ func! SetupTex()
     "let &makeprg="pdflatex\ \-shell\-escape\ \-file\-line\-error\ \-interaction=batchmode\ \-synctex=1\ " . w:tex_file . "\ 1\>\/dev\/null "
     "let &makeprg="latexmk\ \-silent\ \-pdf\ \-pdflatex=\"pdflatex\ \-shell\-escape\ \-file\-line\-error\\"\ " . w:tex_file
     "let &makeprg="latexmk\ \-silent\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
-    let &makeprg="latexmk\ \-silent\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
+    let &makeprg="latexmk\ \-silent\ -bibtex\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
 
     function! Compile()
         " Remove the '| cw' if you do not like the quickfix window
@@ -346,7 +346,7 @@ func! SetupTex()
     function! OpenPDF()
         " open with gnome-open
         if executable("gnome-open")
-            silent execute "!gnome-open\ " . w:pdf_file . "\ &" | redraw!
+            silent execute "!gnome-open\ " . w:pdf_file . "\ " | redraw!
         elseif executable("evince")
             silent execute "!evince\ " . w:pdf_file . "\ &" | redraw!
         elseif executable("open")
