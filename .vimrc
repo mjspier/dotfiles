@@ -346,11 +346,11 @@ func! SetupTex()
     function! OpenPDF()
         " open with gnome-open
         if executable("gnome-open")
-            silent execute "!gnome-open\ " . w:pdf_file . "\ " | redraw!
+            silent execute "!gnome-open\ " . w:pdf_file . "\ 2>/dev/null" | redraw!
         elseif executable("evince")
-            silent execute "!evince\ " . w:pdf_file . "\ &" | redraw!
+            silent execute "!evince\ " . w:pdf_file . "\ 2>/dev/null" | redraw!
         elseif executable("open")
-            silent execute "!open\ " . w:pdf_file . "\ &" | redraw!
+            silent execute "!open\ " . w:pdf_file . "\ 2>/dev/null" | redraw!
         else
             echoerr " no pdf viewer found"
         endif
