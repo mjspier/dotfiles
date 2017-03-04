@@ -75,9 +75,10 @@ yss)    # surround line with parantheses
 # tags
 F8              # toggle tagbar
 ctrl+]          # go to definition
-ctrl+t          # got back to caller
+ctrl+t          # go back to caller
 ctrl+w ctrl+]   # open def in horizontal split
 ctrl+c ctrl+]   # open tag in new tab
+ctrl+w shift+]  # preview tag 
 :tag name       # go to definition
 :ts             # list definition of last tag
 
@@ -103,7 +104,7 @@ Searches for file with `\\documentclass` (master file) in same folder and tries 
 If several files with `\\documentclass` exist in same folder, will not work.
 Uses latexmk for compile
 
-```sh
+```
 # commands
 :TexCompile     # create pdf of latex
 :TexAuto        # auto compile with every save (default on)

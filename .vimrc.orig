@@ -307,9 +307,15 @@ func! SetupTex()
     set filetype=tex
     let g:tex_conceal = ""
     set conceallevel=0
+<<<<<<< HEAD
     " set wrap
     " set textwidth=80
     " set relativenumber
+=======
+    set wrap
+    set relativenumber
+>>>>>>> e667a92daa85b4cdb935dea92a5dd85ad49fb9f4
+    set shiftwidth=2
     colorscheme wombat
     " params 
     let g:TexAuto = 0
@@ -327,7 +333,11 @@ func! SetupTex()
     "let &makeprg="pdflatex\ \-shell\-escape\ \-file\-line\-error\ \-interaction=batchmode\ \-synctex=1\ " . w:tex_file . "\ 1\>\/dev\/null "
     "let &makeprg="latexmk\ \-silent\ \-pdf\ \-pdflatex=\"pdflatex\ \-shell\-escape\ \-file\-line\-error\\"\ " . w:tex_file
     "let &makeprg="latexmk\ \-silent\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
+<<<<<<< HEAD
     let &makeprg="latexmk\ \-silent\ \-bibtex\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
+=======
+    let &makeprg="latexmk\ \-silent\ -bibtex\ \-pdf\ " . w:tex_file . "\ 1\>\/dev\/null "
+>>>>>>> e667a92daa85b4cdb935dea92a5dd85ad49fb9f4
 
     function! Compile()
         " Remove the '| cw' if you do not like the quickfix window
