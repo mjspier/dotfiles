@@ -24,50 +24,57 @@ Quick tip
 
 ```
 # open files
-:e file      # open file in buffer
-:tabnew file # open file in new tab
-:old         # list recent files
+:e file         # open file in buffer
+:tabnew file    # open file in new tab
+:old            # list recent files
 
 # windows
-ctrl+w, s    # open horizontal split
-ctrl+w, v    # open vertical split
+ctrl+w, s       # open horizontal split
+ctrl+w, v       # open vertical split
+ctrl+w, shift+t # change split to tab
+:sb <n>         # open buffer n in horizontal split
+:vertical sb <n># open buffer n in vertical split
 
 # move
-ctrl+o  # got to previous position
-ctrl+i  # jump forward to position
-:jump   # show jump list
+ctrl+o          # got to previous position
+ctrl+i          # jump forward to position
+:jump           # show jump list
 
 # tabs
-ctrl+right # open tab to the right 
-ctrl+left  # open tab to the left 
-:tabm +1   # move tab to the right
-:tabm -1   # move tab to the left
+ctrl+right      # open tab to the right 
+ctrl+left       # open tab to the left 
+:tabm +1        # move tab to the right
+:tabm -1        # move tab to the left
 
 # search 
-F4      # grep word under cursor
-shift+8 # forward search word under cursor
-shift+3 # backward search word under cursor
+F4              # grep word under cursor
+shift+8         # forward search word under cursor
+shift+3         # backward search word under cursor
 
 # nerdtree
-ctrl+n  # togglet nerdtree
-I       # show hidden files
-t       # open in new tab
-s       # open in vertical split
-i       # open in horizontal split
+ctrl+n          # togglet nerdtree
+I               # show hidden files
+t               # open in new tab
+s               # open in vertical split
+i               # open in horizontal split
 
 # coding
-ctrl+_ ctrl+_ # comment
+ctrl+_ ctrl+_   # comment
+
+# folds
+zR              # open all folds
+zM              # close all folds
 
 # formatting
-ggV=G             # format indentions in whole file
-:!column -t       # (unix command) nicely format columns
+ggV=G           # format indentions in whole file
+:!column -t     # (unix command) nicely format columns
 
 
 # surround
-cs'<q>  # change single quotes to q tag
-cst"    # change tags to double quotes
-ysiw]   # surround word with brackets
-yss)    # surround line with parantheses
+cs'<q>          # change single quotes to q tag
+cst"            # change tags to double quotes
+ysiw]           # surround word with brackets
+yss)            # surround line with parantheses
 
 # screen 
 :ScreenShellAttach # attach to running screen session
@@ -94,6 +101,14 @@ z=              # suggest word
 # quckfix
 :ccl            # close quickfix
 :copen          # open quickfix
+
+
+# vimdiff
+vimdiff file1 file2
+]c              # go to next change
+[c              # go to previous change
+:diffget        # optain change from other file
+:diffput        # put change to other file
 
 ```
 
