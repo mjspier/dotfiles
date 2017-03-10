@@ -115,7 +115,7 @@ set lazyredraw      " don't redraw while executing macros (better performance)
 " Turn on the wild menu 
 set wildmenu
 set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.aux,*.out,*.toc,*.ist,*.gls,*.glg,*,glo,*.acn,*.acr " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
@@ -318,7 +318,7 @@ func! SetupTex()
     let w:tex_file =  system("grep -l '\\documentclass' *.tex")[:-2]
     let w:pdf_file =  system("grep -l '\\documentclass' *.tex |  sed 's/.tex/.pdf/'")[:-2]
     let w:log_file =  system("grep -l '\\documentclass' *.tex |  sed 's/.tex/.log/'")[:-2]
-    let g:NERDTreeIgnore=['\.aux$','\.log$','\.maf$','\.mtc','\.toc$','\.synctex\.gz$','\.blg$','\.fdb_latexmk','\.fls$','\.bbl$']    
+    let g:NERDTreeIgnore=['\.aux$','\.log$','\.maf$','\.mtc','\.toc$','\.synctex\.gz$','\.blg$','\.fdb_latexmk','\.fls$','\.bbl$','\.alg','\.glo','\.acr$','\.acn$','\.glg','\.gls','\.glg','\.ist']    
 
     " check if latexmk is available
     if executable("latexmk") != 1
