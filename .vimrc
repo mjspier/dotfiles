@@ -5,7 +5,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 " automatically reload vimrc when it's saved
-au BufWritePost .vimrc so ~/.vimrc
+" au BufWritePost .vimrc so ~/.vimrc
 
 " set working directory to current file
 set autochdir
@@ -86,7 +86,7 @@ endif
 " style 
 set encoding=utf-8
 set nospell 
-:map <F5> :setlocal spell! spelllang=en_gb<CR>
+:map <F6> :setlocal spell! spelllang=en_gb<CR>
 set number          " always show line numbers
 set ruler           " always show current position
 
@@ -115,7 +115,7 @@ set lazyredraw      " don't redraw while executing macros (better performance)
 " Turn on the wild menu 
 set wildmenu
 set wildignore+=.hg,.git,.svn                    " Version control
-set wildignore+=*.aux,*.out,*.toc,*.ist,*.gls,*.glg,*,glo,*.acn,*.acr " LaTeX intermediate files
+set wildignore+=*.aux,*.out,*.toc,*.ist,*.gls,*.glg,*.glo,*.acn,*.acr " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
@@ -191,7 +191,7 @@ autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 " use Todo command to find 
 command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
 
-map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> cw<CR>
+map <F4> :execute "vimgrep /" . expand("<cword>") . "/j ../../**" <Bar> cw<CR>
 
 " Delete trailing white space on save, useful for Python and CoffeeScript
 func! DeleteTrailingWS()
@@ -205,6 +205,29 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " Correct intend for whole document
 func! Format()
 endfunc
+
+
+"" quickfix window
+nnoremap <F9> :call QuickfixToggle()<cr>
+
+let g:quickfix_is_open = 0
+
+function! QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+    else
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
+
+"" quickfix tagbar fix
+" This trigger takes advantage of the fact that the quickfix window can be
+" easily distinguished by its file-type, qf. The wincmd J command is
+" equivalent to the Ctrl+W, Shift+J shortcut telling Vim to move a window to
+" the very bottom (see :help :wincmd and :help ^WJ).
+autocmd FileType qf wincmd J
 
 
 " tab completion
@@ -223,7 +246,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 " let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-nmap <F7> :SyntasticCheck<CR>
+nmap <F7> :SyntasticCheck<CR> :SyntasticToggleMode<CR>
 
 
 " ctrlp options: https://github.com/kien/ctrlp.vim
@@ -234,7 +257,7 @@ let g:ctrlp_working_path_mode = 'ra'   " current working path
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.pyc,*.lo
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_mruf_max = 250
-"let g:ctrlp_user_command = 'find %s -type f'         
+let g:ctrlp_user_command = 'find %s -type f'         
 
 " nerdtree settings
 map <C-n> :NERDTreeTabsToggle<CR>
@@ -260,6 +283,9 @@ nmap <silent> <F8> :TagbarToggle<CR>
 let Tlist_Use_Right_Window   = 1
 nmap <C-c><C-]> <C-w><C-]><C-w>T 
 
+" cscope
+set cscopetag
+
 " mac specific config
 if has("unix")
     let s:uname = system("uname")
@@ -283,7 +309,7 @@ func! SetupPython()
     highlight ColorColumn ctermbg=gray
     let NERDTreeIgnore = ['\.pyc$']    
     let g:pep8_map='<leader>8'
-    set tags=./tags;$HOME
+    set tags=./.tags;$HOME
     
     nnoremap <buffer> K :<C-u>execute "!pydoc " . expand("<cword>")<CR>
 

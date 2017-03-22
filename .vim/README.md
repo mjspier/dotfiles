@@ -10,12 +10,15 @@ Installed plugins
 + nerdtree
 + vim-nerdtree-tabs
 + indentLine
-+ snipmate 
 + tcomment
 + [vim-surround](https://github.com/tpope/vim-surround)
-+ vim-css-color
 + [screen](https://github.com/ervandew/screen)
 + [vim-autotag](https://github.com/craigemery/vim-autotag)
++ [vim-snipmate](https://github.com/garbas/vim-snipmate)
++ [vim-addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git)
++ [tlib_vim](https://github.com/tomtom/tlib_vim.git)
++ [vim-snippets](https://github.com/honza/vim-snippets.git)
+
 
 
 
@@ -45,6 +48,7 @@ ctrl+right      # open tab to the right
 ctrl+left       # open tab to the left 
 :tabm +1        # move tab to the right
 :tabm -1        # move tab to the left
+:tabo           # close all other tabs
 
 # search 
 F4              # grep word under cursor
@@ -93,7 +97,7 @@ ctrl+w shift+]  # preview tag
 F7              # check python against pep8
 
 # spell check
-F5              # activate spell check
+F6              # activate spell check
 ]s              # next missspelled word
 [s              # forward missspelled word
 z=              # suggest word
@@ -101,6 +105,7 @@ z=              # suggest word
 # quckfix
 :ccl            # close quickfix
 :copen          # open quickfix
+F9              # toggle quickfix
 
 
 # vimdiff
@@ -109,6 +114,11 @@ vimdiff file1 file2
 [c              # go to previous change
 :diffget        # optain change from other file
 :diffput        # put change to other file
+
+
+# ctrlp
+ctrl+p          # open ctrlp
+ctrl+b          # switch between modes
 
 ```
 
