@@ -2,6 +2,8 @@
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+# global history
+set INC_APPEND_HISTORY
 unsetopt beep
 bindkey -e
 setopt noflowcontrol
