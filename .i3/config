@@ -174,7 +174,7 @@ bar {
 
 bindsym $mod+i exec "chromium-browser"
 bindsym $mod+n exec "nautilus --no-desktop"
-bindsym $mod+u exec "unity-control-center"
+bindsym $mod+u exec "XDG_CURRENT_DESKTOP=Unity unity-control-center"
 
 # calc
 bindsym $mod+c exec "gnome-calculator"
@@ -199,11 +199,11 @@ workspace 6 output HDMI3
 assign [class="chromium"] 1:www
 assign [class="eclipse"] 4:code
 
+exec --no-startup-id unset XDG_CURRENT_DESKTOP
 exec --no-startup-id feh --bg-scale ~/.i3/wallpaper.jpg
 exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id unity-settings-daemon
-exec --no-startup-id unset XDG_CURRENT_DESKTOP
 exec pidgin
-exec --no-startup-id xmodmap ~/.Xmodmap
+exec_always --no-startup-id "sleep 1; xmodmap /home/mspieren/.Xmodmap"
 
 bindsym Scroll_Lock exec ~/.bin/kvm

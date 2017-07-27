@@ -93,8 +93,15 @@ ctrl+w shift+]  # preview tag
 :tag name       # go to definition
 :ts             # list definition of last tag
 
+# cscope        
+ctrl+\ s        # show usage of word under cursor
+ctrl+space s    # show usage in split screen (horizontal)
+ctrl+2xspace s  # show usage in split screen (vertical)
+:cscope foo     # find symbol foo
+
+
 # syntax check
-F7              # check python against pep8
+F7              # syntax checker toggle mode 
 
 # spell check
 F6              # activate spell check
@@ -140,4 +147,11 @@ Uses latexmk for compile
 
 # keys
 <leader>ll      # compile document
+```
+
+Python
+------
+
+```
+K               # open pyhton doc for word under cursor
 ```
