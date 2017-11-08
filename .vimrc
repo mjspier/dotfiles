@@ -42,7 +42,7 @@ set title           " change the terminal's title
 set visualbell      " don't beep
 set noerrorbells    " don't beep
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
-"set conceallevel=0
+set conceallevel=0
 
 "  no backup files
 set nobackup 

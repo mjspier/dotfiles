@@ -28,15 +28,15 @@ PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOST}:${PWD}\007"'
 source ~/.zsh/exports.zsh
 source ~/.zsh/aliases.zsh
 source ~/.zsh/prompt.zsh
-source ~/.local/bin/virtualenvwrapper.sh
 
 # activate kps virtual env when in kps dir
 function chpwd() {
     echo "$PWD" > ${HOME}/.cwd
-    if [[ $PWD == /home/mspieren/Development/kps/* ]] ; then
-        if [[ $VIRTUAL_ENV != kps ]] ; then
-            echo "activate virtual env (kps)"
-            workon kps
+    if [ -e ".venv" ] ; then
+        VENV=$(cat .venv)
+        if [[ $VIRTUAL_ENV != $VENV ]] ; then
+            echo "activate virtual env ($VENV)"
+            workon $VENV
         fi
     fi
 }
