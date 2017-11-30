@@ -269,10 +269,13 @@ let NERDTreeIgnore = ['\.pyc$','\.o$']
 " Setting vim airline
 set laststatus=2
 
-" setting screen 
-nmap <C-c><C-a> :ScreenShellAttach<cr>
-nmap <C-c><C-c> :ScreenSend<cr>
-vmap <C-c><C-c> :ScreenSend<cr>
+" setting slim 
+let g:slime_target = "tmux"
+let g:slime_paste_file = "$HOME/.slime_paste"
+let g:slime_python_ipython = 1
+" nmap <C-c><C-a> :ScreenShellAttach<cr>
+" nmap <C-c><C-c> :ScreenSend<cr>
+" vmap <C-c><C-c> :ScreenSend<cr>
 
 " TComment
 nmap <C-c> :TComment<CR>

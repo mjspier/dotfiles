@@ -32,9 +32,12 @@ source ~/.zsh/prompt.zsh
 # activate kps virtual env when in kps dir
 function chpwd() {
     echo "$PWD" > ${HOME}/.cwd
-    if [ -e ".venv" ] ; then
+    if [ -f ".venv" ] ; then
         VENV=$(cat .venv)
-        if [[ $VIRTUAL_ENV != $VENV ]] ; then
+        if [[ -z $VIRTUAL_ENV ]] ; then
+            echo "activate virtual env ($VENV)"
+            workon $VENV
+        elif [[ $(basename $VIRTUAL_ENV) != $VENV ]] ; then
             echo "activate virtual env ($VENV)"
             workon $VENV
         fi
