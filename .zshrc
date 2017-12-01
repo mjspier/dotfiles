@@ -33,3 +33,15 @@ source ~/.zsh/prompt.zsh
 
 # start python virtualenv
 source /usr/local/bin/virtualenvwrapper.sh
+
+# activate kps virtual env when in kps dir
+function chpwd() {
+    echo "$PWD" > ${HOME}/.cwd
+    if [ -e ".venv" ] ; then
+        VENV=$(cat .venv)
+        if [[ $VIRTUAL_ENV != $VENV ]] ; then
+            echo "activate virtual env ($VENV)"
+            workon $VENV
+        fi
+    fi
+}

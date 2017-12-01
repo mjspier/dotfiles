@@ -1,0 +1,7 @@
+#!/bin/bash
+git ls-files -m  | while read file ; do 
+    if [[ $file = *.py ]] ; then 
+        echo ">>> check file: $file" 
+        flake8 $file 
+    fi 
+done
