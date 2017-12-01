@@ -80,8 +80,8 @@ cst"            # change tags to double quotes
 ysiw]           # surround word with brackets
 yss)            # surround line with parantheses
 
-# screen 
-:ScreenShellAttach # attach to running screen session
+# tmux 
+<c-c><c-c>      # send to tmux session
 
 # tags
 F8              # toggle tagbar
