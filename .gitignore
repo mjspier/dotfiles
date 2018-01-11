@@ -5,4 +5,5 @@
 ./.i3/startup.sh
 ./.zsh/exports.zsh
 ./.zsh/aliases.zsh
+**/*.pyc
 

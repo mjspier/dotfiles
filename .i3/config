@@ -86,11 +86,11 @@ bindsym $mod+a focus parent
 bindsym $mod+z focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1:www
-bindsym $mod+2 workspace 2:shell
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4:code
-bindsym $mod+5 workspace 5:sql
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
@@ -98,11 +98,11 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1:www
-bindsym $mod+Shift+2 move container to workspace 2:shell
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4:code
-bindsym $mod+Shift+5 move container to workspace 5:sql
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
@@ -188,22 +188,22 @@ bindsym XF86AudioLowerVolume exec amixer -c 1 -q set Master 2dB- unmute
 bindsym XF86AudioMute exec pactl set-sink-mute 1 toggle 
 
 # assign monitor to workspace
-workspace 1:www output HDMI1 
-workspace 2:shell output HDMI1 
-workspace 3 output HDMI1 
-workspace 4:code output HDMI3 
-workspace 5:sql output HDMI3
-workspace 6 output HDMI3
+# workspace 1:www output HDMI1 
+# workspace 2:shell output HDMI1 
+# workspace 3 output HDMI1 
+# workspace 4:code output HDMI3 
+# workspace 5:sql output HDMI3
+# workspace 6 output HDMI3
 
-# assign applications to workspace
-assign [class="chromium"] 1:www
-assign [class="eclipse"] 4:code
+
 
 exec --no-startup-id unset XDG_CURRENT_DESKTOP
-exec --no-startup-id feh --bg-scale ~/.i3/wallpaper.jpg
-exec --no-startup-id ~/.dropbox-dist/dropboxd
 exec --no-startup-id unity-settings-daemon
-exec pidgin
+exec --no-startup-id fluxgui
+exec --no-startup-id nm-applet
+exec --no-startup-id pasystray
+exec --no-startup-id blueman-applet
+exec --no-startup-id feh --bg-scale ~/.i3/wallpaper.jpg
 exec_always --no-startup-id "sleep 1; xmodmap /home/mspieren/.Xmodmap"
-
-bindsym Scroll_Lock exec ~/.bin/kvm
+# exec pidgin
+#bindsym Scroll_Lock exec ~/.bin/kvm
