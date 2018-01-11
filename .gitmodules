@@ -1,10 +1,6 @@
 [submodule ".vim/bundle/ctrlp.vim"]
 	path = .vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim
-[submodule ".vim/bundle/indentLine.vim"]
-	path = .vim/bundle/indentLine.vim
-	url = https://github.com/vim-scripts/indentLine.vim
-    ignore = dirty
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree

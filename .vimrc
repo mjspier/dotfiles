@@ -316,7 +316,7 @@ func! SetupPython()
     set tags=./.tags;$HOME
     
     nnoremap <buffer> K :<C-u>execute "!pydoc " . expand("<cword>")<CR>
-
+    set conceallevel=0
 endfunc
 au BufRead,BufNewFile *.py,*.pyw call SetupPython() 
 

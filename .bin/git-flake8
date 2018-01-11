@@ -1,4 +1,5 @@
 #!/bin/bash
+source ~/.virtalenvs/kps/bin/activate
 git ls-files -m  | while read file ; do 
     if [[ $file = *.py ]] ; then 
         echo ">>> check file: $file" 
