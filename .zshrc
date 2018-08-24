@@ -32,7 +32,7 @@ source ~/.zsh/prompt.zsh
 #source ~/.local/bin/virtualenvwrapper.sh
 
 # start python virtualenv
-source /usr/local/bin/virtualenvwrapper.sh
+source ~/.local/bin/virtualenvwrapper.sh
 
 # activate kps virtual env when in kps dir
 function chpwd() {

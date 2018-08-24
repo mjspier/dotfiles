@@ -32,3 +32,9 @@
 [submodule ".vim/bundle/vim-slime"]
 	path = .vim/bundle/vim-slime
 	url = https://github.com/jpalardy/vim-slime.git
+[submodule ".vim/bundle/indentpython.vim"]
+	path = .vim/bundle/indentpython.vim
+	url = https://github.com/vim-scripts/indentpython.vim
+[submodule ".vim/bundle/vim-flake8"]
+	path = .vim/bundle/vim-flake8
+	url = https://github.com/nvie/vim-flake8

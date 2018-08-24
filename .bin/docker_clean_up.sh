@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker rm -v $(docker ps -a -q -f status=exited)
-docker rmi $(docker images -f "dangling=true" -q)
+docker rm -f $(docker ps -aq) 2>/dev/null
+docker rmi -f $(docker images -f "dangling=true" -q) 2>/dev/null

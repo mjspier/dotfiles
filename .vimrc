@@ -14,6 +14,11 @@ set autochdir
 set modelines=0
 set nomodeline
 
+" With a map leader it's possible to do extra key combinations
+" " like <leader>w saves the current file
+let mapleader = ","
+let g:mapleader = ","
+
 " Set to auto read when a file is changed from the outside
 set autoread
 au CursorHold * checktime
@@ -30,10 +35,6 @@ if has("autocmd")
 endif
 
 
-" With a map leader it's possible to do extra key combinations
-" " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 set history=1000    " remember more commands and search history
 set undolevels=1000 " use many levels of undo
@@ -58,6 +59,30 @@ filetype indent on
 
 set clipboard=unnamedplus " set linux clipboard
 
+" delete does not use register
+nnoremap <leader>d "_d
+nnoremap <leader>D "_D
+xnoremap <leader>d "_d
+xnoremap <leader>p "_dP
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Windows putty fix
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if &term =~ "xterm"
+    colorscheme wombat256mod
+  " " 256 colors
+  " let &t_Co = 256
+  " " restore screen after quitting
+  " let &t_ti = "\<Esc>7\<Esc>[r\<Esc>[?47h"
+  " let &t_te = "\<Esc>[?47l\<Esc>8"
+  " if has("terminfo")
+  "   let &t_Sf = "\<Esc>[3%p1%dm"
+  "   let &t_Sb = "\<Esc>[4%p1%dm"
+  " else
+  "   let &t_Sf = "\<Esc>[3%dm"
+  "   let &t_Sb = "\<Esc>[4%dm"
+  " endif
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " OS X
@@ -174,6 +199,10 @@ map <C-Left> <Esc>:tabprev<CR>
 map <C-Right> <Esc>:tabnext<CR>
 "map <C-S>} :tabnext
 
+" move lines in visual mode
+vnoremap <C-j> :m '>+1<CR>gv=gv
+vnoremap <C-k> :m '<-2<CR>gv=gv
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Commands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,6 +221,7 @@ autocmd! BufNewFile * silent! 0r ~/.vim/skel/tmpl.%:e
 command! Todo noautocmd vimgrep /TODO\|FIXME/j ** | cw
 
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j ../../**" <Bar> cw<CR>
+map nnoremap gr :grep <cword> *<CR>
 
 " Delete trailing white space on save, useful for Python and CoffeeScript
 func! DeleteTrailingWS()
@@ -304,19 +334,29 @@ endif
 func! SetupPython()
     let g:autotagDisabled = 0
     let g:syntastic_python_checkers=['flake8']
+    set tabstop=4
+    set softtabstop=4
+    set shiftwidth=4
+    set textwidth=79
+    set expandtab
     set foldmethod=indent
     set foldnestmax=2
     set foldlevelstart=30
     set foldlevel=99
     set nosmartindent             " smart indent doesn't handle comments nice in python
+    set autoindent
     set colorcolumn=80
     highlight ColorColumn ctermbg=gray
     let NERDTreeIgnore = ['\.pyc$']    
     let g:pep8_map='<leader>8'
     set tags=./.tags;$HOME
-    
+    set fileformat=unix
+    set encoding=utf-8
     nnoremap <buffer> K :<C-u>execute "!pydoc " . expand("<cword>")<CR>
+    map <F4> :execute "vimgrep /" . expand("<cword>") . "/j ../../**/*.py" <Bar> cw<CR>
     set conceallevel=0
+    let python_highlight_all=1
+    syntax on
 endfunc
 au BufRead,BufNewFile *.py,*.pyw call SetupPython() 
 
@@ -402,7 +442,6 @@ func! SetupTex()
 
     autocmd BufWritePost * call AutoCompile()
 endfunc
-
 au BufRead,BufNewFile *.tex call SetupTex() 
 
 func! SetupCpp()
@@ -410,5 +449,10 @@ func! SetupCpp()
     let g:autotagDisabled = 0
     set tags=./.tags;$HOME
 endfunc
-
 au BufRead,BufNewFile *.c call SetupCpp() 
+
+func! SetupYaml()
+    set shiftwidth=2
+    set tabstop=2
+endfunc
+au BufRead,BufNewFile *.yml call SetupYaml() 
