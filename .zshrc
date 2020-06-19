@@ -29,22 +29,29 @@ PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOST}:${PWD}\007"'
 source ~/.zsh/exports.zsh
 source ~/.zsh/aliases.zsh
 source ~/.zsh/prompt.zsh
-#source ~/.local/bin/virtualenvwrapper.sh
+source ~/.zsh/functions.zsh
 
-# start python virtualenv
-source ~/.local/bin/virtualenvwrapper.sh
 
-# activate kps virtual env when in kps dir
+# activate virtualenv 
 function chpwd() {
     echo "$PWD" > ${HOME}/.cwd
-    if [ -f ".venv" ] ; then
-        VENV=$(cat .venv)
-        if [[ -z $VIRTUAL_ENV ]] ; then
-            echo "activate virtual env ($VENV)"
-            workon $VENV
-        elif [[ $(basename $VIRTUAL_ENV) != $VENV ]] ; then
-            echo "activate virtual env ($VENV)"
-            workon $VENV
+    if [ -z "$VIRTUAL_ENV" ] ; then
+        if [ -f ".venv" ] ; then
+            VENV=$(cat .venv)
+            echo "activate global virtualenv ${VENV}"
+            source "${HOME}/.venvs/${VENV}/bin/activate"
+            # source  $(cat .venv)
+        elif [ -d ".venv" ] ; then
+            echo "activate virtualenv"
+            source .venv/bin/activate
         fi
     fi
+    # elif [ -f "Pipfile" ] ; then
+    #     # check if not activated yet
+    #     if [ -z "$VIRTUAL_ENV" ] ; then
+    #         precmd()
+    #         pipenv shell
+    #     fi
+    # fi
 }
+
